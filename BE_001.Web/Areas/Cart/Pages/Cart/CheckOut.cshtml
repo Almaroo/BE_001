@@ -1,0 +1,37 @@
+@page
+@model CheckOutModel
+
+<h2 class="mb-3">Your cart:</h2>
+@if (Model.Items.Any())
+{
+    <ul class="list-group">
+        @foreach (var item in Model.Items)
+        {
+            <li class="list-group-item">
+                <div class="container text-center">
+                    <div class="row">
+                        <div class="col">
+                            <img src="@item.ImgUrl" alt="@item.Name" style="max-width: 100px"/>
+                        </div>
+                        <div class="col-6">
+                            <h3 class="mb-1">@item.Name</h3>
+                            <span class="p-1">@item.Description</span>
+                            <span>@item.Price.ToString("C")</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+    
+    <p class="h3">Total</p>
+    <p>@Model.Items.Sum(x => x.Price).ToString("C")</p>
+                                                   
+    <form asp-page-handler="Checkout" method="post">
+        <button class="btn btn-primary" type="submit">Checkout</button>
+    </form>
+}
+else
+{
+    <p class="h3">Cart is empty</p>
+}

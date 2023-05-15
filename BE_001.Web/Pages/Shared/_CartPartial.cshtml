@@ -1,0 +1,12 @@
+@using BE_001.Web.Services.Cart
+@model IndexModel
+@inject ICartService CartService
+
+<a class="btn btn-primary" asp-area="Cart" asp-page="/Cart/CheckOut">
+    <i class="fa fa-shopping-cart"></i>
+    Cart
+    @if (CartService.ItemsCount() > 0)
+    {
+        <span class="badge text-bg-secondary">@CartService.ItemsCount()</span>
+    }
+</a>

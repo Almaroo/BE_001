@@ -1,0 +1,1 @@
+Simple shop with cart functionality
