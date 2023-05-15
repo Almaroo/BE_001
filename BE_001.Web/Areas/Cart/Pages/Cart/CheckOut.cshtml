@@ -18,6 +18,12 @@
                             <span class="p-1">@item.Description</span>
                             <span>@item.Price.ToString("C")</span>
                         </div>
+                        <div class="col">
+                            <form asp-page-handler="Remove" method="post">
+                                <input type="hidden" name="@nameof(item.ItemId)" value="@item.ItemId"/>
+                                <button class="btn btn-danger" type="submit">Remove</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </li>

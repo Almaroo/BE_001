@@ -42,4 +42,11 @@ public class CheckOutModel : PageModel
         _cartService.ClearCart();
         return LocalRedirect("~/Cart/Cart/Confirmation");
     }
+
+    public async Task<IActionResult> OnPostRemove()
+    {
+        _cartService.RemoveFromCart(await _browsingService.GetItem(ItemId));
+        Items = _cartService.GetItems().ToList();
+        return Page();
+    }
 }

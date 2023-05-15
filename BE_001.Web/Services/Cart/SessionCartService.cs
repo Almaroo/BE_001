@@ -25,7 +25,7 @@ public class SessionCartService : ICartService
     public void RemoveFromCart(Item item)
     {
         var items = GetItems().ToList();
-        items.Remove(item);
+        items.Remove(items.FirstOrDefault(x => x.ItemId == item.ItemId));
         _session.AddJson(SessionsCartItemsKey, items);
     }
 
